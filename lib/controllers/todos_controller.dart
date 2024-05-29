@@ -14,8 +14,14 @@ class TodosController with ChangeNotifier {
   List get todos {
     return [..._todos];
   }
-  void addTodo(TodoModel todo){
+
+  void addTodo(TodoModel todo) {
     _todos.add(todo);
+    notifyListeners();
+  }
+
+  void deleteTodo(int index) {
+    _todos.removeAt(index);
     notifyListeners();
   }
 }

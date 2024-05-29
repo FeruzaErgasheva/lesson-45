@@ -12,15 +12,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        home: TodosProvoder(
-      todosController: TodosController(),
+    return TodosProvoder(
+      // ignore: sort_child_properties_last
       child: Builder(builder: (context) {
         return ListenableBuilder(
           listenable: TodosProvoder.of(context),
-          builder: (context, child) => const HomeScreen(),
+          builder: (context, child) => const MaterialApp(
+            home: HomeScreen(),
+          ),
         );
       }),
-    ));
+      todosController: TodosController(),
+    );
   }
 }
